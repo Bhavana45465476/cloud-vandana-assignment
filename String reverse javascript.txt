@@ -1,0 +1,9 @@
+function reverse(str,substr){
+    return str.split(substr).reverse().join(substr)
+    
+}
+
+let str = prompt("")
+let str1 = reverse(str,"")
+let str2 = reverse(str1," ")
+console.log(str2);
