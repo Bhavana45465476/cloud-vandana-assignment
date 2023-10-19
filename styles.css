@@ -1,0 +1,41 @@
+body{
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Tilt Neon', sans-serif;
+    background-image:url('bg.png') ;
+}
+
+form{
+    margin-top: 5%;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-image: url('Untitled design.png');
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.one{
+    padding: 2%;
+    margin-left: 20px;
+}
+h1{
+    text-align: center;
+}
+.two{
+    padding: 2%;
+    text-align: center;
+}
+.submit{
+    background-color: black;
+    color: white;
+    border-color: black;
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+}
+.submit:hover{
+    background-color: white;
+    color: black;
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+    transition: 0.5s;
+}

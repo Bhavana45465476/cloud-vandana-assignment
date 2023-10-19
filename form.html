@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="div-1">
+        <form id="surveyForm" onsubmit="return submitForm()" onreset="resetForm()">
+            <h1 class="title">Survey Form</h1>
+            <div class="one">
+                <label for="firstName"><strong>First Name:</strong></label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="one">
+                <label for="lastName"><strong>Last Name:</strong></label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="one">
+                <label for="dob"><strong>Date of Birth:</strong></label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="one">
+                <label for="country"><strong>Country: </strong></label>
+                <select id="country" name="country" required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="">Algeria</option>
+                    <option value="">Bangladesh</option>
+                    <option value="">China</option>
+                    <option value="">Denmark</option>
+                    <option value="">England</option>
+                    <option value="">Finland</option>
+                    <option value="">Germany</option>
+                    <option value="">Hungary</option>
+                    <option value="">India</option>
+                    <option value="">Jamaica</option>
+                    <option value="">Kenya</option>
+                    <option value="">Libya</option>
+                    <option value="">Madagascar</option>
+                    <option value="">Namibia</option>
+                    <option value="">Oman</option>
+                    <option value="">Pakistan</option>
+                    <option value="">Russia</option>
+                    <option value="">South Korea</option>
+                    <option value="">Tasmania</option>
+                    <option value="">Uganda</option>
+                    <option value="">Vietnam</option>
+                    <option value="">Whales</option>
+                    <option value="">Yemen</option>
+                    <option value="">Zambia</option>
+                </select>
+            </div>
+            <div class="one">
+                <label><strong>Gender: </strong></label>
+                <label for="male"><strong>Male</strong></label>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="female"><strong>Female</strong></label>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="other"><strong>Other</strong></label>
+                <input type="radio" id="other" name="gender" value="Other" required>
+            </div>
+            <div class="two">
+                <label for="profession"><strong>Profession: </strong></label><br>
+                <input type="text" id="profession" name="profession" required>
+            </div>
+            <div class="two">
+                <label for="email"><strong>Email: </strong></label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="two">
+                <label for="mobile"><strong>Number: </strong></label><br>
+                <input type="tel" id="mobile" name="mobile" required>
+            </div>
+            <div class="two">
+                <input type="submit" class="submit" value="Submit">
+                <input type="reset" class="submit" value="Reset">
+            </div>
+        </form>
+    </div>
+
+    
+    <script>
+        function submitForm() {
+            var form = document.getElementById('surveyForm');
+            
+            // Check if the form is valid
+            if (!form.checkValidity()) {
+                // If the form is not valid, let the browser handle the validation messages
+                return false;
+            }
+    
+            // If the form is valid, display the input values in a popup
+            var inputValues = '';
+            var inputs = form.elements;
+    
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type !== 'submit' && inputs[i].type !== 'reset') {
+                    var label = inputs[i].labels[0].textContent;
+                    var value = inputs[i].value;
+    
+                    // Format date of birth
+                    if (inputs[i].type === 'date') {
+                        var date = new Date(value);
+                        var day = ('0' + date.getDate()).slice(-2);
+                        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                        var year = date.getFullYear();
+                        value = day + '-' + month + '-' + year;
+                    }
+    
+                    // Handle radio buttons
+                    if (inputs[i].type === 'radio' && !inputs[i].checked) {
+                        continue; // Skip unchecked radio buttons
+                    }
+    
+                    // Handle country dropdown
+                    if (inputs[i].type === 'select-one') {
+                        value = inputs[i].options[inputs[i].selectedIndex].text;
+                    }
+    
+                    inputValues += label + ': ' + value + '\n';
+                }
+            }
+    
+            alert('Form Submission:\n\n' + inputValues);
+    
+            // Reset the form
+            form.reset();
+    
+            // Prevent the form from submitting (since we're handling it with JavaScript)
+            return false;
+        }
+    
+        function resetForm() {
+            // Handle any additional reset logic if needed
+        }
+    </script>
+    
+    
+</body>
+</html>
